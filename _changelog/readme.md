@@ -1,6 +1,12 @@
+## Dinsdag 14 oktober
+
+**Basis layout navigatie & pagina gemaakt**
+
+**ERD V02 gemaakt** ![ERD V02](images/Erd_v02.png)
+
 ## Maandag 13 oktober
 
-**ERD gemaakt** ![ERD V01](images/Erd_v01.png)
+**ERD V01 gemaakt** ![ERD V01](images/Erd_v01.png)
 
 **Planning gemaakt** ![Planning V01](images/Planning_v01.png)
 
