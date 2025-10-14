@@ -2,7 +2,7 @@
 
 **ERD gemaakt** ![ERD V01](images/Erd_v01.png)
 
-**Planning gemaakt**
+**Planning gemaakt** ![Planning V01](images/Planning_v01.png)
 
 ## Donderdag 09 oktober
 
