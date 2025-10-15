@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    //laat de index pagina en stuurt alle reviews mee
     public function index()
     {
         $reviews = Review::all();
@@ -32,9 +30,7 @@ class ReviewController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
+    //laat de detailpagina zien en stuurt de specified review mee
     public function show(string $id)
     {
         $review = Review::find($id);

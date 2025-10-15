@@ -14,6 +14,15 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            padding: {
+                basic: '6rem',
+            },
+            colors: {
+                background: '#caece9',
+                nav: '#4ea19a',
+                review: '#70e8dd',
+                reviewborder: '#55b3aa',
+            }
         },
     },
 

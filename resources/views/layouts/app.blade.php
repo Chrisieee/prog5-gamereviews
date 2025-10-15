@@ -10,11 +10,11 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-w-full">
+<body class="min-w-full bg-background">
 @include('layouts.menu')
 
 @isset($header)
-    <header class="text-center py-5 px-24">
+    <header class="text-center py-7 px-basic bg-nav">
         {{ $header }}
     </header>
 @endisset

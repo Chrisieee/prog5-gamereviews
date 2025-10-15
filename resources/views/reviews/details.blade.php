@@ -1,9 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl">{{$review->title}}</h2>
+        <h2 class="text-xl font-bold">Review: {{$review->title}}</h2>
     </x-slot>
-    <div class="p-2">
+    <section class="px-basic">
         <p>Rating: {{$review->rating}}</p>
         <p>Text: {{$review->text}}</p>
-    </div>
+    </section>
 </x-app-layout>

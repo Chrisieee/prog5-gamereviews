@@ -1,5 +1,9 @@
 ## Woensdag 15 oktober
 
+**Basis styling**
+
+**Migrations aangemaakt voor alle tabelen behalve comments**
+
 **Progressie aan de reviews:**
 
 - Reviews detail pagina werkend met info uit database

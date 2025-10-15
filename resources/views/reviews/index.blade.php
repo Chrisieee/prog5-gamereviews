@@ -1,22 +1,18 @@
+{{--reviews index--}}
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl">Reviews</h2>
+        <h1 class="text-xl font-bold">Reviews</h1>
     </x-slot>
-    @dump($reviews)
+    {{--@dump($reviews)--}}
 
-    {{--    @dump($review->title)--}}
-    {{--    @dump($review->text)--}}
-    {{--    @foreach($review->attributesToArray() as $info)--}}
-    {{--        <p>{{$info}}</p>--}}
-    {{--    @endforeach--}}
-
-    @foreach($reviews as $review)
-        <div class="p-2">
-            <p>Title: {{$review->title}}</p>
-            <p>Rating: {{$review->rating}}</p>
-            <p>Text: {{$review->text}}</p>
-            <a href="/reviews/{{$review->id}}">Details</a>
-        </div>
-    @endforeach
-
+    <section class="flex gap-5 px-basic py-4">
+        @foreach($reviews as $review)
+            <div class="flex-1 py-2 px-4 bg-review border-4 border-solid border-reviewborder rounded-2xl">
+                <h2 class="text-lg text-center">Title: {{$review->title}}</h2>
+                <p>Rating: {{$review->rating}}</p>
+                <p>Text: {{$review->text}}</p>
+                <a href="/reviews/{{$review->id}}">Details</a>
+            </div>
+        @endforeach
+    </section>
 </x-app-layout>
