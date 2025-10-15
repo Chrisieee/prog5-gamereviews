@@ -7,8 +7,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home'])
     ->name('home');
+Route::get('/about-us', [PageController::class, 'about'])
+    ->name('about-us');
+
 Route::get('/reviews', [ReviewController::class, 'index'])
-    ->name('reviews');
+    ->name('reviews.index');
+Route::get('/reviews/{id}', [ReviewController::class, 'show'])
+    ->name('reviews.index');
 
 //breeze stuff
 Route::get('/dashboard', function () {

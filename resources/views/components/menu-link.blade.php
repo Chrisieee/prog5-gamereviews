@@ -1,3 +1,3 @@
 @props(['active'])
 
-<a class="bg-red-300" {{ $attributes }} >{{$slot}}</a>
+<a class="flex-grow p-2 bg-red-500 @if($active) bg-gray-300  @endif " {{ $attributes }} >{{$slot}}</a>

@@ -1,3 +1,12 @@
+## Woensdag 15 oktober
+
+**Progressie aan de reviews:**
+
+- Reviews detail pagina werkend met info uit database
+- Reviews uit database laten zien op index van reviews
+- Model voor Reviews aangemaakt
+- Database reviews tabel aangemaakt
+
 ## Dinsdag 14 oktober
 
 **Basis layout navigatie & pagina gemaakt**

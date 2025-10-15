@@ -14,7 +14,7 @@
 @include('layouts.menu')
 
 @isset($header)
-    <header>
+    <header class="text-center py-5 px-24">
         {{ $header }}
     </header>
 @endisset
