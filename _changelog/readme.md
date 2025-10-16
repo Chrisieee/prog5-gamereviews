@@ -1,5 +1,7 @@
 ## Donderdag 16 oktober
 
+**Create pagina werkt whoohoo!**
+
 **Footer toegevoegd + extra styling toegevoegd**
 
 **CCS-grid voor reviews gebruikt**

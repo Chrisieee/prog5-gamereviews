@@ -12,8 +12,12 @@ Route::get('/about-us', [PageController::class, 'about'])
 
 Route::get('/reviews', [ReviewController::class, 'index'])
     ->name('reviews.index');
+Route::get('/reviews/create', [ReviewController::class, 'create'])
+    ->name('reviews.create');
 Route::get('/reviews/{id}', [ReviewController::class, 'show'])
-    ->name('reviews.index');
+    ->name('reviews.details');
+Route::post('/reviews', [ReviewController::class, 'store'])
+    ->name('reviews.store');
 
 //breeze stuff
 Route::get('/dashboard', function () {

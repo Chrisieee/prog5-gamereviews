@@ -13,8 +13,14 @@
 <body class="min-h-screen min-w-full bg-background">
 @include('layouts.menu')
 
-<main class="py-4 px-basic">
-    {{ $slot }}
+<header class="text-center py-7 px-basic bg-header border-b-4 border-solid border-reviewborder">
+    <h1 class="text-xl font-bold">Login</h1>
+</header>
+
+<main class="py-4 px-basic h-body">
+    <section class="py-8 px-8 bg-review border-4 border-solid border-reviewborder rounded-2xl h-full">
+        {{ $slot }}
+    </section>
 </main>
 
 @include('layouts.footer')

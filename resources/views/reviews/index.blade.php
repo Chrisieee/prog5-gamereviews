@@ -11,8 +11,12 @@
                 <h2 class="text-lg text-center">Title: {{$review->title}}</h2>
                 <p>Rating: {{$review->rating}}</p>
                 <p>Text: {{$review->text}}</p>
-                <a href="/reviews/{{$review->id}}">Details</a>
+                <a class="hover:text-nav" href="/reviews/{{$review->id}}">Details</a>
             </div>
         @endforeach
     </section>
+
+    <a class="border-4 border-reviewborder bg-reviewborder hover:bg-review px-4 py-2 rounded-md"
+       href="{{ route('reviews.create') }}">Add</a>
+
 </x-app-layout>

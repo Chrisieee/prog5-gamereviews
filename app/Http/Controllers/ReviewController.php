@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
@@ -14,20 +15,32 @@ class ReviewController extends Controller
         return view('reviews.index', compact('reviews'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    //laat een leeg formulier zien
     public function create()
     {
-        //
+        $games = Game::all();
+        return view('reviews.create', compact('games'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    //de info naar database te zetten
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:100',
+            'rating' => 'required',
+            'text' => 'required',
+        ]);
+
+        $review = new Review();
+        $review->title = $request->input('title');
+        $review->rating = $request->input('rating');
+        $review->game_id = $request->input('game_id');
+        $review->text = $request->input('text');
+        $review->user_id = $request->input('user_id');
+
+        $review->save();
+
+        return redirect()->route('reviews.index');
     }
 
     //laat de detailpagina zien en stuurt de specified review mee

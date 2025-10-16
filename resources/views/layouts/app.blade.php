@@ -19,8 +19,15 @@
     </header>
 @endisset
 
-<main class="py-4 px-basic">
+<main class="py-4 px-basic h-body">
+
     {{$slot}}
+
+    @isset($section)
+        <section class="py-2 px-4 bg-review border-4 border-solid border-reviewborder rounded-2xl h-full">
+            {{ $section }}
+        </section>
+    @endisset
 </main>
 
 @include('layouts.footer')

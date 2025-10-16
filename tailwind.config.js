@@ -23,6 +23,9 @@ export default {
                 header: '#78c6bf',
                 review: '#78c6bf',
                 reviewborder: '#4ea19a',
+            },
+            height: {
+                body: '77vh',
             }
         },
     },

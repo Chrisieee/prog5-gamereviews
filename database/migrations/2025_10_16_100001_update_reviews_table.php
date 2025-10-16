@@ -10,12 +10,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('consoles', function (Blueprint $table) {
-            $table->id();
-
-            $table->string('name', 50);
-
-            $table->timestamps();
+        Schema::table('reviews', function (Blueprint $table) {
+            $table->string('image', 100)->nullable()->change();
         });
     }
 
@@ -24,6 +20,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('consoles');
+        //
     }
 };

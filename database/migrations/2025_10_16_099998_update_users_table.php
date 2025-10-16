@@ -10,12 +10,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('genres', function (Blueprint $table) {
-            $table->id();
-
-            $table->string('name', 50);
-
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('profile_picture', 100)->nullable();
+            $table->boolean('admin')->default(0);
         });
     }
 
@@ -24,6 +21,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('genres');
+        //
     }
 };
