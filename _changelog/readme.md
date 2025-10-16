@@ -1,5 +1,7 @@
 ## Donderdag 16 oktober
 
+**Info uit 1-op-veel relatie is zichtbaar op detail en index**
+
 **Create pagina werkt whoohoo!**
 
 **Footer toegevoegd + extra styling toegevoegd**

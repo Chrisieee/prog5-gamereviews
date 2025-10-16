@@ -4,7 +4,9 @@
     </x-slot>
 
     <x-slot name="section">
-        <p>Rating: {{$review->rating}}</p>
-        <p>Text: {{$review->text}}</p>
+        <p>From: {{ $review->user->name }}</p>
+        <p>Rating: {{ $review->rating }}</p>
+        <p>Game: {{ $review->game->name }}</p>
+        <p>Text: {{ $review->text }}</p>
     </x-slot>
 </x-app-layout>

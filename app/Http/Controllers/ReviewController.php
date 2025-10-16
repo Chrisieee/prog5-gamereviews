@@ -12,6 +12,7 @@ class ReviewController extends Controller
     public function index()
     {
         $reviews = Review::all();
+        //$reviews = Review::all()->with('user')->with('game')
         return view('reviews.index', compact('reviews'));
     }
 
