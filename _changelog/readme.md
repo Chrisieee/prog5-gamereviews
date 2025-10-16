@@ -1,3 +1,9 @@
+## Donderdag 16 oktober
+
+**Footer toegevoegd + extra styling toegevoegd**
+
+**CCS-grid voor reviews gebruikt**
+
 ## Woensdag 15 oktober
 
 **Basis styling**

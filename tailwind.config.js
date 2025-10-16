@@ -20,8 +20,9 @@ export default {
             colors: {
                 background: '#caece9',
                 nav: '#4ea19a',
-                review: '#70e8dd',
-                reviewborder: '#55b3aa',
+                header: '#78c6bf',
+                review: '#78c6bf',
+                reviewborder: '#4ea19a',
             }
         },
     },
