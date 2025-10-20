@@ -14,8 +14,8 @@
         <p>Text: {{ $review->text }}</p>
         <p>From: {{ $review->user->name }}</p>
 
-        @if($review->user_id === Auth::user()->id)
-                <a href="/reviews/edit/{{ $review->user_id }}">Edit</a>
+        @if(Auth::user() && $review->user_id === Auth::user()->id)
+                <a class="hover:text-nav" href="/reviews/edit/{{ $review->id }}">Edit</a>
         @endif
     </x-slot>
 </x-app-layout>

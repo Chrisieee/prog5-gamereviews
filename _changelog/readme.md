@@ -1,7 +1,12 @@
 ## Maandag 20 oktober
 
-**Progressie edit pagina:**
-- Data word geladen op pagina
+**Edit pagina werk whoohoo!**
+
+**Images bij user nog niet werkend (geen idee waarom)**
+
+**Je kan je eigen reviews zien op dashboard**
+
+**Data word geladen op edit pagina**
 
 **Nav past aan op of je ingelogd bent of niet**
 

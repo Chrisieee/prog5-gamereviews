@@ -22,7 +22,7 @@
                 <p>Game: {{ $review->game->name }}</p>
                 <p>Text: {{ $review->text }}</p>
                 <p>From: {{ $review->user->name }}</p>
-                <a class="hover:text-nav" href="/reviews/{{ $review->id }}">Details</a>
+                <a class="hover:text-nav" href="/reviews/details/{{ $review->id }}">Details</a>
             </div>
         @endforeach
     </section>

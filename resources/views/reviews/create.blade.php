@@ -9,19 +9,19 @@
 
             <div class="mt-4 flex flex-col">
                 <x-input-label for="title" :value="__('Title')"/>
-                <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required/>
+                <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')"/>
                 <x-input-error :messages="$errors->get('title')" class="mt-2"/>
             </div>
 
             <div class="mt-4 flex flex-col">
                 <x-input-label for="rating" :value="__('Rating')"/>
-                <x-text-input id="rating" class="block mt-1 w-full" type="number" name="rating" min="1" max="5" :value="old('rating')" required/>
+                <x-text-input id="rating" class="block mt-1 w-full" type="number" name="rating" min="1" max="5" :value="old('rating')"/>
                 <x-input-error :messages="$errors->get('rating')" class="mt-2"/>
             </div>
 
             <div class="mt-4 flex flex-col">
                 <x-input-label for="image" :value="__('Image')"/>
-                <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" :value="old('image')" required/>
+                <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" :value="old('image')"/>
                 <x-input-error :messages="$errors->get('image')" class="mt-2"/>
             </div>
 

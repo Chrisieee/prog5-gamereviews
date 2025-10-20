@@ -34,7 +34,11 @@ class ReviewController extends Controller
             'text' => 'required',
         ]);
 
-        $reviewImage = $request->file('image')->storePublicly('storage', 'public');
+        if ($request->file('image') != null) {
+            $reviewImage = $request->file('image')->storePublicly('storage', 'public');
+        } else {
+            $reviewImage = null;
+        }
 
         $review = new Review();
         $review->title = $request->input('title');
@@ -77,6 +81,20 @@ class ReviewController extends Controller
             'game_id' => 'required',
             'text' => 'required',
         ]);
+
+        $review = Review::find($id);
+        $review->title = $request->input('title');
+        $review->rating = $request->input('rating');
+        $review->game_id = $request->input('game_id');
+        $review->text = $request->input('text');
+        if ($request->file('image') != null) {
+            $reviewImage = $request->file('image')->storePublicly('storage', 'public');
+            $review->image = $reviewImage;
+        }
+
+        $review->save();
+
+        return redirect()->route('reviews.index');
     }
 
     /**

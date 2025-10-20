@@ -30,6 +30,6 @@
     @endisset
 </main>
 
-@include('layouts.footer')
+{{--@include('layouts.footer')--}}
 </body>
 </html>
