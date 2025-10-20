@@ -4,9 +4,18 @@
     </x-slot>
 
     <x-slot name="section">
-        <p>From: {{ $review->user->name }}</p>
+        @if($review->image !== null)
+            <img src="{{ asset('storage/' . $review->image) }}" alt="{{ $review->title }}">
+        @else
+            <img src="{{ Vite::asset('resources/images/image.jpg') }}" alt="no image">
+        @endif
         <p>Rating: {{ $review->rating }}</p>
         <p>Game: {{ $review->game->name }}</p>
         <p>Text: {{ $review->text }}</p>
+        <p>From: {{ $review->user->name }}</p>
+
+        @if($review->user_id === Auth::user()->id)
+                <a href="/reviews/edit/{{ $review->user_id }}">Edit</a>
+        @endif
     </x-slot>
 </x-app-layout>

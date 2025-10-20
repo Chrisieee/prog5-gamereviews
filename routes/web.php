@@ -18,6 +18,10 @@ Route::get('/reviews/{id}', [ReviewController::class, 'show'])
     ->name('reviews.details');
 Route::post('/reviews', [ReviewController::class, 'store'])
     ->name('reviews.store');
+Route::get('/reviews/edit/{id}', [ReviewController::class, 'edit'])
+    ->name('review.edit');
+Route::post('/reviews/update', [ReviewController::class, 'update'])
+    ->name('reviews.update');
 
 //breeze stuff
 Route::get('/dashboard', function () {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class ReviewController extends Controller
 {
@@ -29,14 +30,18 @@ class ReviewController extends Controller
         $request->validate([
             'title' => 'required|max:100',
             'rating' => 'required',
+            'game_id' => 'required',
             'text' => 'required',
         ]);
+
+        $reviewImage = $request->file('image')->storePublicly('storage', 'public');
 
         $review = new Review();
         $review->title = $request->input('title');
         $review->rating = $request->input('rating');
         $review->game_id = $request->input('game_id');
         $review->text = $request->input('text');
+        $review->image = $reviewImage;
         $review->user_id = $request->input('user_id');
 
         $review->save();
@@ -56,7 +61,9 @@ class ReviewController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $review = Review::find($id);
+        $games = Game::all();
+        return view('reviews.edit', ['review' => $review, 'games' => $games]);
     }
 
     /**
@@ -64,7 +71,12 @@ class ReviewController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:100',
+            'rating' => 'required',
+            'game_id' => 'required',
+            'text' => 'required',
+        ]);
     }
 
     /**

@@ -1,3 +1,12 @@
+## Maandag 20 oktober
+
+**Progressie edit pagina:**
+- Data word geladen op pagina
+
+**Nav past aan op of je ingelogd bent of niet**
+
+**Images werken in review**
+
 ## Donderdag 16 oktober
 
 **Info uit 1-op-veel relatie is zichtbaar op detail en index**
@@ -15,7 +24,6 @@
 **Migrations aangemaakt voor alle tabelen behalve comments**
 
 **Progressie aan de reviews:**
-
 - Reviews detail pagina werkend met info uit database
 - Reviews uit database laten zien op index van reviews
 - Model voor Reviews aangemaakt

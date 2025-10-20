@@ -7,7 +7,12 @@
     </div>
     <div class="flex-1"></div>
     <div class="flex justify-evenly flex-1 max-w-44">
-        <x-menu-link href="{{ route('login') }}" :active="request()->routeIs('login')">Login</x-menu-link>
-        <x-menu-link href="{{ route('register') }}" :active="request()->routeIs('register')">Register</x-menu-link>
+        @if(Auth::user())
+            <x-menu-link href="{{ route('logout') }}" :active="request()->routeIs('logout')">Logout</x-menu-link>
+            <x-menu-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">Profile</x-menu-link>
+        @else
+            <x-menu-link href="{{ route('login') }}" :active="request()->routeIs('login')">Login</x-menu-link>
+            <x-menu-link href="{{ route('register') }}" :active="request()->routeIs('register')">Register</x-menu-link>
+        @endif
     </div>
 </nav>
