@@ -12,8 +12,8 @@ class ReviewController extends Controller
     //laat de index pagina en stuurt alle reviews mee
     public function index()
     {
-        $reviews = Review::all();
-        //$reviews = Review::all()->with('user')->with('game')
+        $reviews = Review::all()->where('active', '=', '1');
+        //$reviews = Review::all()->with('user')->with('game');
         return view('reviews.index', compact('reviews'));
     }
 
@@ -53,6 +53,22 @@ class ReviewController extends Controller
         return redirect()->route('reviews.index');
     }
 
+    public function active($id)
+    {
+        $review = Review::find($id);
+        $review->active = 1;
+        $review->save();
+        return redirect()->route('admin.reviews');
+    }
+
+    public function deactivate($id)
+    {
+        $review = Review::find($id);
+        $review->active = 0;
+        $review->save();
+        return redirect()->route('admin.reviews');
+    }
+
     //laat de detailpagina zien en stuurt de specified review mee
     public function show(string $id)
     {
@@ -60,9 +76,7 @@ class ReviewController extends Controller
         return view('reviews.details', compact('review'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    //laat de edit pagina zien
     public function edit(string $id)
     {
         $review = Review::find($id);
@@ -70,9 +84,7 @@ class ReviewController extends Controller
         return view('reviews.edit', ['review' => $review, 'games' => $games]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    //update de data in de database
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -97,11 +109,18 @@ class ReviewController extends Controller
         return redirect()->route('reviews.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    public function delete(string $id)
+    {
+        $review = Review::find($id);
+        return view('reviews.delete', compact('review'));
+    }
+
+    //verwijderen uit database
     public function destroy(string $id)
     {
-        //
+        $review = Review::find($id);
+        $review->delete();
+
+        return redirect()->route('reviews.index');
     }
 }

@@ -28,6 +28,12 @@
             {{ $section }}
         </section>
     @endisset
+
+    @isset($table)
+        <section class="py-2 px-4 bg-review border-4 border-solid border-reviewborder rounded-2xl h-full flex flex-col">
+            {{ $table }}
+        </section>
+    @endisset
 </main>
 
 {{--@include('layouts.footer')--}}

@@ -3,7 +3,7 @@
     <x-slot name="header">
         <h1 class="text-xl font-bold">Reviews</h1>
     </x-slot>
-    {{--@dump($reviews)--}}
+
     <div class="w-full text-center">
         <a class="border-4 border-reviewborder bg-reviewborder hover:bg-review px-4 py-2 rounded-md"
            href="{{ route('reviews.create') }}">Add</a>

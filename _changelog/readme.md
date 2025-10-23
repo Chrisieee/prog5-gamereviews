@@ -1,4 +1,7 @@
 ## Donderdag 23 oktober
+- Op admin pagina kan je nu reviews activeren en deactiveren
+- Admin pagina's zijn aangemaakt (nog geen validatie op rol)
+- Delete werkt nu ook (nog geen validatie)
 - Je kunt een game aanmaken die een veel op veel relatie heeft!
 
 ## Maandag 20 oktober

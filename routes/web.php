@@ -4,6 +4,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 //basic pagina routes
@@ -29,8 +30,11 @@ Route::get('/reviews/edit/{id}', [ReviewController::class, 'edit'])
 Route::post('/reviews/update/{id}', [ReviewController::class, 'update'])
     ->name('reviews.update')
     ->middleware('auth');
-Route::get('/reviews/delete/{id}', [ReviewController::class, 'destroy'])
+Route::get('/reviews/delete/{id}', [ReviewController::class, 'delete'])
     ->name('reviews.delete')
+    ->middleware('auth');
+Route::post('/reviews/destroy/{id}', [ReviewController::class, 'destroy'])
+    ->name('reviews.destroy')
     ->middleware('auth');
 
 //game routes
@@ -41,6 +45,25 @@ Route::post('/game', [GameController::class, 'store'])
     ->name('game.store')
     ->middleware('auth');
 
+//admin
+Route::get('/admin', [AdminController::class, 'index'])
+    ->name('admin.index')
+    ->middleware('auth');
+Route::get('/admin/reviews', [AdminController::class, 'reviews'])
+    ->name('admin.reviews')
+    ->middleware('auth');
+Route::get('/admin/users', [AdminController::class, 'users'])
+    ->name('admin.users')
+    ->middleware('auth');
+Route::get('/admin/games', [AdminController::class, 'games'])
+    ->name('admin.games')
+    ->middleware('auth');
+Route::get('/admin/review/activate/{id}', [ReviewController::class, 'active'])
+    ->name('admin.review.active')
+    ->middleware('auth');
+Route::get('/admin/review/deactivate/{id}', [ReviewController::class, 'deactivate'])
+    ->name('admin.review.active')
+    ->middleware('auth');
 
 //dashboard van profiel
 Route::get('/dashboard', [ProfileController::class, 'index'])

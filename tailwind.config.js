@@ -23,6 +23,8 @@ export default {
                 header: '#78c6bf',
                 review: '#78c6bf',
                 reviewborder: '#4ea19a',
+                red: '#b62525',
+                green: '#2bba30',
             },
             height: {
                 body: '77vh',
