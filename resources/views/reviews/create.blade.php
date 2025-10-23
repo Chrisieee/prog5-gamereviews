@@ -36,6 +36,10 @@
                 <x-input-error :messages="$errors->get('game_id')" class="mt-2"/>
             </div>
 
+            <div class="text-center mt-3">
+                <a class="hover:text-reviewborder" href="{{ route('game.create') }}">Add different game</a>
+            </div>
+
             <div class="mt-4 flex flex-col">
                 <x-input-label for="text" :value="__('Text')"/>
                 <textarea class="border-4 border-reviewborder bg-reviewborder focus:border-reviewborder focus:ring-reviewborder focus:bg-review rounded-md shadow-sm"

@@ -19,8 +19,8 @@
                         <td class="px-2 py-1">{{ $review->rating }}</td>
                         <td class="px-2 py-1">{{ $review->game->name }}</td>
                         <td class="px-2 py-1">{{ $review->text }}</td>
-                        <td class="px-2 py-1">Edit</td>
-                        <td class="px-2 py-1">Delete</td>
+                        <td class="px-2 py-1"><a class="hover:text-nav" href="/reviews/edit/{{ $review->id }}">Edit</a></td>
+                        <td class="px-2 py-1"><a class="hover:text-nav" href="/reviews/delete/{{ $review->id }}">Delete</a></td>
                     </tr>
                 @endforeach
             </table>

@@ -10,4 +10,9 @@ class Game extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class);
+    }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
 
 //basic pagina routes
@@ -23,11 +24,23 @@ Route::post('/reviews', [ReviewController::class, 'store'])
     ->name('reviews.store')
     ->middleware('auth');
 Route::get('/reviews/edit/{id}', [ReviewController::class, 'edit'])
-    ->name('review.edit')
+    ->name('reviews.edit')
     ->middleware('auth');
 Route::post('/reviews/update/{id}', [ReviewController::class, 'update'])
     ->name('reviews.update')
     ->middleware('auth');
+Route::get('/reviews/delete/{id}', [ReviewController::class, 'destroy'])
+    ->name('reviews.delete')
+    ->middleware('auth');
+
+//game routes
+Route::get('/game/create', [GameController::class, 'create'])
+    ->name('game.create')
+    ->middleware('auth');
+Route::post('/game', [GameController::class, 'store'])
+    ->name('game.store')
+    ->middleware('auth');
+
 
 //dashboard van profiel
 Route::get('/dashboard', [ProfileController::class, 'index'])
