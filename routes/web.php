@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\AdminController;
+use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 
 //basic pagina routes
@@ -16,54 +17,51 @@ Route::get('/about-us', [PageController::class, 'about'])
 //review routes
 Route::get('/reviews', [ReviewController::class, 'index'])
     ->name('reviews.index');
-Route::get('/reviews/create', [ReviewController::class, 'create'])
-    ->name('reviews.create')
-    ->middleware('auth');
 Route::get('/reviews/details/{id}', [ReviewController::class, 'show'])
     ->name('reviews.details');
-Route::post('/reviews', [ReviewController::class, 'store'])
-    ->name('reviews.store')
-    ->middleware('auth');
-Route::get('/reviews/edit/{id}', [ReviewController::class, 'edit'])
-    ->name('reviews.edit')
-    ->middleware('auth');
-Route::post('/reviews/update/{id}', [ReviewController::class, 'update'])
-    ->name('reviews.update')
-    ->middleware('auth');
-Route::get('/reviews/delete/{id}', [ReviewController::class, 'delete'])
-    ->name('reviews.delete')
-    ->middleware('auth');
-Route::post('/reviews/destroy/{id}', [ReviewController::class, 'destroy'])
-    ->name('reviews.destroy')
-    ->middleware('auth');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/reviews/create', [ReviewController::class, 'create'])
+        ->name('reviews.create');
+    Route::post('/reviews', [ReviewController::class, 'store'])
+        ->name('reviews.store');
+    Route::get('/reviews/edit/{id}', [ReviewController::class, 'edit'])
+        ->name('reviews.edit');
+    Route::post('/reviews/update/{id}', [ReviewController::class, 'update'])
+        ->name('reviews.update');
+    Route::get('/reviews/delete/{id}', [ReviewController::class, 'delete'])
+        ->name('reviews.delete');
+    Route::post('/reviews/destroy/{id}', [ReviewController::class, 'destroy'])
+        ->name('reviews.destroy');
+});
 
 //game routes
-Route::get('/game/create', [GameController::class, 'create'])
-    ->name('game.create')
-    ->middleware('auth');
-Route::post('/game', [GameController::class, 'store'])
-    ->name('game.store')
-    ->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('/game/create', [GameController::class, 'create'])
+        ->name('game.create');
+    Route::post('/game', [GameController::class, 'store'])
+        ->name('game.store');
+});
 
-//admin
-Route::get('/admin', [AdminController::class, 'index'])
-    ->name('admin.index')
-    ->middleware('auth');
-Route::get('/admin/reviews', [AdminController::class, 'reviews'])
-    ->name('admin.reviews')
-    ->middleware('auth');
-Route::get('/admin/users', [AdminController::class, 'users'])
-    ->name('admin.users')
-    ->middleware('auth');
-Route::get('/admin/games', [AdminController::class, 'games'])
-    ->name('admin.games')
-    ->middleware('auth');
-Route::get('/admin/review/activate/{id}', [ReviewController::class, 'active'])
-    ->name('admin.review.active')
-    ->middleware('auth');
-Route::get('/admin/review/deactivate/{id}', [ReviewController::class, 'deactivate'])
-    ->name('admin.review.active')
-    ->middleware('auth');
+//admin routes
+Route::middleware(['auth', IsAdmin::class])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])
+        ->name('admin.index');
+    Route::get('/admin/reviews', [AdminController::class, 'reviews'])
+        ->name('admin.reviews');
+    Route::get('/admin/users', [AdminController::class, 'users'])
+        ->name('admin.users');
+    Route::get('/admin/games', [AdminController::class, 'games'])
+        ->name('admin.games');
+    Route::get('/admin/review/activate/{id}', [ReviewController::class, 'active'])
+        ->name('admin.review.active');
+    Route::get('/admin/review/deactivate/{id}', [ReviewController::class, 'deactivate'])
+        ->name('admin.review.active');
+//    Route::get('/users/edit', [UserController::class, 'edit'])
+//        ->name('users.edit');
+//    Route::get('/users/delete', [UserController::class, 'edit'])
+//        ->name('users.delete');
+});
 
 //dashboard van profiel
 Route::get('/dashboard', [ProfileController::class, 'index'])

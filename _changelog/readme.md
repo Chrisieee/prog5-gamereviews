@@ -1,3 +1,7 @@
+## Maandag 27 oktober
+- Je krijgt een admin knop in je nav als je admin bent
+- Admin kant kan je alleen bij als je admin bent
+
 ## Donderdag 23 oktober
 - Op admin pagina kan je nu reviews activeren en deactiveren
 - Admin pagina's zijn aangemaakt (nog geen validatie op rol)

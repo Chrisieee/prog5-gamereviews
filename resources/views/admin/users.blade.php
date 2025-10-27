@@ -25,8 +25,8 @@
                 <tr>
                     <td class="px-2 py-1">{{ $user->name }}</td>
                     <td class="px-2 py-1">{{ $user->email }}</td>
-                    <td class="px-2 py-1"><a class="hover:text-nav" href="/reviews/edit/{{ $user->id }}">Edit</a></td>
-                    <td class="px-2 py-1"><a class="hover:text-nav" href="/reviews/delete/{{ $user->id }}">Delete</a></td>
+{{--                    <td class="px-2 py-1"><a class="hover:text-nav" href="{{ route('users.edit', $user->id) }}">Edit</a></td>--}}
+{{--                    <td class="px-2 py-1"><a class="hover:text-nav" href="{{ route('users.delete', $user->id) }}">Delete</a></td>--}}
                 </tr>
             @endforeach
         </table>

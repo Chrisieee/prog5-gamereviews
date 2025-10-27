@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use App\Models\Review;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -13,8 +14,9 @@ class ReviewController extends Controller
     public function index()
     {
         $reviews = Review::all()->where('active', '=', '1');
+        $genres = Genre::all();
         //$reviews = Review::all()->with('user')->with('game');
-        return view('reviews.index', compact('reviews'));
+        return view('reviews.index', ['reviews' => $reviews, 'genres' => $genres]);
     }
 
     //laat een leeg formulier zien

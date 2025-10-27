@@ -27,7 +27,7 @@ export default {
                 green: '#2bba30',
             },
             height: {
-                body: '77vh',
+                body: '83vh',
             }
         },
     },

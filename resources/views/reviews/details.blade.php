@@ -15,7 +15,7 @@
         <p>From: {{ $review->user->name }}</p>
 
         @if(Auth::user() && $review->user_id === Auth::user()->id)
-                <a class="hover:text-nav" href="/reviews/edit/{{ $review->id }}">Edit</a>
+                <a class="hover:text-nav" href="{{ route('reviews.edit', $review->id) }}">Edit</a>
         @endif
     </x-slot>
 </x-app-layout>

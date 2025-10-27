@@ -30,8 +30,8 @@
                     @else
                         <td class="px-2 py-1"><a class="text-green hover:text-nav" href="/admin/review/deactivate/{{ $review->id }}">Unpublish</a></td>
                     @endif
-                    <td class="px-2 py-1"><a class="hover:text-nav" href="/reviews/edit/{{ $review->id }}">Edit</a></td>
-                    <td class="px-2 py-1"><a class="hover:text-nav" href="/reviews/delete/{{ $review->id }}">Delete</a></td>
+                    <td class="px-2 py-1"><a class="hover:text-nav" href="{{ route('reviews.edit', $review->id) }}">Edit</a></td>
+                    <td class="px-2 py-1"><a class="hover:text-nav" href="{{ route('reviews.delete', $review->id) }}">Delete</a></td>
                 </tr>
             @endforeach
         </table>

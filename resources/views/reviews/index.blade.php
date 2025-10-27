@@ -9,6 +9,26 @@
            href="{{ route('reviews.create') }}">Add</a>
     </div>
 
+{{--    <form class="flex" action="" method="post">--}}
+{{--        @csrf--}}
+{{--        <div>--}}
+{{--            <x-input-label for="genre_id[]" :value="__('Genres')"/>--}}
+{{--            <select class="border-4 border-reviewborder bg-reviewborder focus:border-reviewborder focus:ring-reviewborder focus:bg-review rounded-md shadow-sm"--}}
+{{--                    name="genre_id[]" id="genre_id[]">--}}
+{{--                @foreach($genres as $genre)--}}
+{{--                    <option value="{{ $genre->id }}">{{ $genre->name }}</option>--}}
+{{--                @endforeach--}}
+{{--            </select>--}}
+{{--            <x-input-error :messages="$errors->get('genre_id[]')" class="mt-2"/>--}}
+{{--        </div>--}}
+
+{{--        <div class="text-center mt-3">--}}
+{{--            <x-primary-button class="ms-3">--}}
+{{--                {{ __('Search') }}--}}
+{{--            </x-primary-button>--}}
+{{--        </div>--}}
+{{--    </form>--}}
+
     <section class="grid grid-cols-3 gap-5 mt-4">
         @foreach($reviews as $review)
             <div class="flex-1 py-2 px-4 bg-review border-4 border-solid border-reviewborder rounded-2xl">
@@ -22,7 +42,7 @@
                 <p>Game: {{ $review->game->name }}</p>
                 <p>Text: {{ $review->text }}</p>
                 <p>From: {{ $review->user->name }}</p>
-                <a class="hover:text-nav" href="/reviews/details/{{ $review->id }}">Details</a>
+                <a class="hover:text-nav" href="{{ route('reviews.details', $review->id) }}">Details</a>
             </div>
         @endforeach
     </section>
