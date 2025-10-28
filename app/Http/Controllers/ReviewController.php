@@ -5,17 +5,51 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use App\Models\Review;
 use App\Models\Genre;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class ReviewController extends Controller
 {
     //laat de index pagina en stuurt alle reviews mee
-    public function index()
+    public function index(Request $request)
     {
-        $reviews = Review::all()->where('active', '=', '1');
+        $query = Review::with(['user', 'game'])->where('active', '=', '1');
+
+//        if ($request->filled('genre') && $request->filled('name')) {
+//            $reviews = $query->whereHas('game.genres', function ($q) use ($request) {
+//                $genres = $request->input('genre');
+//                $q->whereIn('genres.name', $genres);
+//            })->get();
+//        } else if ($request->filled('genre')) {
+//            $genres = $request->input('genre');
+//            $reviews = $query->whereHas('game.genres', function ($q) use ($genres) {
+//                $q->whereIn('genres.name', $genres);
+//            })->get();
+//        } else if ($request->filled('name')) {
+//            $reviews = $query->whereHas('game', function ($q) use ($request) {
+//                $q->where('name', 'like', '%' . $request->input('name') . '%');
+//            })->get();
+//        } else {
+//            $reviews = $query->get();
+//        }
+
+        if ($request->filled('genre')) {
+            $genres = $request->input('genre');
+            $query->whereHas('game.genres', function ($q) use ($genres) {
+                $q->whereIn('genres.name', $genres);
+            });
+        }
+
+        if ($request->filled('name')) {
+            $query->whereHas('game', function ($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->input('name') . '%');
+            })->get();
+        }
+
+        $reviews = $query->get();
         $genres = Genre::all();
-        //$reviews = Review::all()->with('user')->with('game');
         return view('reviews.index', ['reviews' => $reviews, 'genres' => $genres]);
     }
 
@@ -58,6 +92,11 @@ class ReviewController extends Controller
     public function active($id)
     {
         $review = Review::find($id);
+
+        if (Auth::user()->cannot('activate', $review)) {
+            return redirect()->route('home');
+        }
+
         $review->active = 1;
         $review->save();
         return redirect()->route('admin.reviews');
@@ -66,6 +105,11 @@ class ReviewController extends Controller
     public function deactivate($id)
     {
         $review = Review::find($id);
+
+        if (Auth::user()->cannot('activate', $review)) {
+            return redirect()->route('home');
+        }
+
         $review->active = 0;
         $review->save();
         return redirect()->route('admin.reviews');
@@ -83,6 +127,11 @@ class ReviewController extends Controller
     {
         $review = Review::find($id);
         $games = Game::all();
+
+        if (Auth::user()->cannot('edit-review', $review)) {
+            return redirect()->route('reviews.index');
+        }
+
         return view('reviews.edit', ['review' => $review, 'games' => $games]);
     }
 
@@ -114,6 +163,9 @@ class ReviewController extends Controller
     public function delete(string $id)
     {
         $review = Review::find($id);
+
+        Gate::authorize('delete-review', $review);
+
         return view('reviews.delete', compact('review'));
     }
 
@@ -121,6 +173,9 @@ class ReviewController extends Controller
     public function destroy(string $id)
     {
         $review = Review::find($id);
+
+        Gate::authorize('delete-review', $review);
+
         $review->delete();
 
         return redirect()->route('reviews.index');

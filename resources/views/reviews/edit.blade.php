@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-slot name="section">
-        <form action="/reviews/update/{{ $review->id }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('reviews.index) }}" method="post" enctype="multipart/form-data">
             @csrf
 
             <div class="mt-4 flex flex-col">

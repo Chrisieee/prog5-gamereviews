@@ -1,3 +1,10 @@
+## Dinsdag 28 oktober
+- Zoeken en filteren tegelijk werkt ook!
+- Zoeken op gamenaam werkt nu ook
+- Filteren op genre werkt whoohoo!
+- Je kan reviews editen en verwijderen als je admin bent
+- Je kan alleen reviews editen en verwijderen als je hem zelf hebt gemaakt
+
 ## Maandag 27 oktober
 - Je krijgt een admin knop in je nav als je admin bent
 - Admin kant kan je alleen bij als je admin bent

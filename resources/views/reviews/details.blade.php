@@ -14,8 +14,8 @@
         <p>Text: {{ $review->text }}</p>
         <p>From: {{ $review->user->name }}</p>
 
-        @if(Auth::user() && $review->user_id === Auth::user()->id)
-                <a class="hover:text-nav" href="{{ route('reviews.edit', $review->id) }}">Edit</a>
-        @endif
+        @can('edit-review', $review)
+            <a class="hover:text-nav" href="{{ route('reviews.edit', $review->id) }}">Edit</a>
+        @endcan
     </x-slot>
 </x-app-layout>
