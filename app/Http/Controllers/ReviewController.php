@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use App\Models\Review;
 use App\Models\Genre;
+use App\Models\Comment;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -17,24 +18,6 @@ class ReviewController extends Controller
     {
         $query = Review::with(['user', 'game'])->where('active', '=', '1');
 
-//        if ($request->filled('genre') && $request->filled('name')) {
-//            $reviews = $query->whereHas('game.genres', function ($q) use ($request) {
-//                $genres = $request->input('genre');
-//                $q->whereIn('genres.name', $genres);
-//            })->get();
-//        } else if ($request->filled('genre')) {
-//            $genres = $request->input('genre');
-//            $reviews = $query->whereHas('game.genres', function ($q) use ($genres) {
-//                $q->whereIn('genres.name', $genres);
-//            })->get();
-//        } else if ($request->filled('name')) {
-//            $reviews = $query->whereHas('game', function ($q) use ($request) {
-//                $q->where('name', 'like', '%' . $request->input('name') . '%');
-//            })->get();
-//        } else {
-//            $reviews = $query->get();
-//        }
-
         if ($request->filled('genre')) {
             $genres = $request->input('genre');
             $query->whereHas('game.genres', function ($q) use ($genres) {
@@ -45,7 +28,7 @@ class ReviewController extends Controller
         if ($request->filled('name')) {
             $query->whereHas('game', function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->input('name') . '%');
-            })->get();
+            })->orWhere('text', 'like', '%' . $request->input('name') . '%')->get();
         }
 
         $reviews = $query->get();
@@ -56,6 +39,10 @@ class ReviewController extends Controller
     //laat een leeg formulier zien
     public function create()
     {
+        if (Auth::user()->cannot('review-make')) {
+            return redirect()->route('home');
+        }
+
         $games = Game::all();
         return view('reviews.create', compact('games'));
     }
@@ -154,6 +141,7 @@ class ReviewController extends Controller
             $reviewImage = $request->file('image')->storePublicly('storage', 'public');
             $review->image = $reviewImage;
         }
+        $review->user_id = $request->input('user_id');
 
         $review->save();
 
@@ -164,7 +152,9 @@ class ReviewController extends Controller
     {
         $review = Review::find($id);
 
-        Gate::authorize('delete-review', $review);
+        if (Auth::user()->cannot('delete-review', $review)) {
+            return redirect()->route('reviews.index');
+        }
 
         return view('reviews.delete', compact('review'));
     }
@@ -174,7 +164,9 @@ class ReviewController extends Controller
     {
         $review = Review::find($id);
 
-        Gate::authorize('delete-review', $review);
+        if (Auth::user()->cannot('delete-review', $review)) {
+            return redirect()->route('reviews.index');
+        }
 
         $review->delete();
 

@@ -26,9 +26,9 @@
                     <td class="px-2 py-1">{{ $review->title }}</td>
                     <td class="px-2 py-1">{{ $review->user->name }}</td>
                     @if($review->active === 0)
-                        <td class="px-2 py-1"><a class="text-red hover:text-nav" href="/admin/review/activate/{{ $review->id }}">Publish</a></td>
+                        <td class="px-2 py-1"><a class="text-red hover:text-nav" href="{{ route('admin.review.active', $review->id) }}">Publish</a></td>
                     @else
-                        <td class="px-2 py-1"><a class="text-green hover:text-nav" href="/admin/review/deactivate/{{ $review->id }}">Unpublish</a></td>
+                        <td class="px-2 py-1"><a class="text-green hover:text-nav" href="{{ route('admin.review.deactive', $review->id) }}">Unpublish</a></td>
                     @endif
                     <td class="px-2 py-1"><a class="hover:text-nav" href="{{ route('reviews.edit', $review->id) }}">Edit</a></td>
                     <td class="px-2 py-1"><a class="hover:text-nav" href="{{ route('reviews.delete', $review->id) }}">Delete</a></td>

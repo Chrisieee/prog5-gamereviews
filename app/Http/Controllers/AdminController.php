@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Review;
 use App\Models\User;
 use App\Models\Game;
+use App\Models\Genre;
 
 use Illuminate\Http\Request;
 
@@ -30,5 +31,11 @@ class AdminController extends Controller
     {
         $games = Game::all();
         return view('admin.games', compact('games'));
+    }
+
+    public function genres()
+    {
+        $genres = Genre::all();
+        return view('admin.genres', compact('genres'));
     }
 }

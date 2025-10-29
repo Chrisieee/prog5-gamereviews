@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-slot name="section">
-        <form action="{{ route('reviews.index) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('reviews.update', $review->id) }}" method="post" enctype="multipart/form-data">
             @csrf
 
             <div class="mt-4 flex flex-col">
@@ -30,7 +30,8 @@
                 <select class="border-4 border-reviewborder bg-reviewborder focus:border-reviewborder focus:ring-reviewborder focus:bg-review rounded-md shadow-sm"
                         name="game_id" id="game_id">
                     @foreach($games as $game)
-                        <option value="{{ $game->id }}">{{ $game->name }}</option>
+                        <option @if($game->id === $review->game->id) selected @endif
+                                value="{{ $game->id }}">{{ $game->name }}</option>
                     @endforeach
                 </select>
                 <x-input-error :messages="$errors->get('game_id')" class="mt-2"/>
@@ -42,6 +43,8 @@
                           id="text" name="text" rows="5" cols="5" placeholder="Type your review here">{{ $review->text }}</textarea>
                 <x-input-error :messages="$errors->get('text')" class="mt-2"/>
             </div>
+
+            <input type="hidden" id="user_id" name="user_id" value="{{ $review->user_id }}">
 
             <div class="text-center mt-3">
                 <x-primary-button class="ms-3">

@@ -5,6 +5,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\CommentController;
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +21,7 @@ Route::get('/reviews', [ReviewController::class, 'index'])
     ->name('reviews.index');
 Route::get('/reviews/details/{id}', [ReviewController::class, 'show'])
     ->name('reviews.details');
-
+//review routes waar je ingelogd voor moet zijn
 Route::middleware('auth')->group(function () {
     Route::get('/reviews/create', [ReviewController::class, 'create'])
         ->name('reviews.create');
@@ -43,6 +45,14 @@ Route::middleware('auth')->group(function () {
         ->name('game.store');
 });
 
+//comments routes
+Route::middleware('auth')->group(function (){
+    Route::get('/comment/create/{id}', [CommentController::class, 'create'])
+        ->name('comment.create');
+    Route::post('/comment', [CommentController::class, 'store'])
+        ->name('comment.store');
+});
+
 //admin routes
 Route::middleware(['auth', IsAdmin::class])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])
@@ -53,14 +63,16 @@ Route::middleware(['auth', IsAdmin::class])->group(function () {
         ->name('admin.users');
     Route::get('/admin/games', [AdminController::class, 'games'])
         ->name('admin.games');
+    Route::get('/admin/genres', [AdminController::class, 'genres'])
+        ->name('admin.genres');
     Route::get('/admin/review/activate/{id}', [ReviewController::class, 'active'])
         ->name('admin.review.active');
     Route::get('/admin/review/deactivate/{id}', [ReviewController::class, 'deactivate'])
-        ->name('admin.review.active');
-//    Route::get('/users/edit', [UserController::class, 'edit'])
-//        ->name('users.edit');
-//    Route::get('/users/delete', [UserController::class, 'edit'])
-//        ->name('users.delete');
+        ->name('admin.review.deactive');
+    Route::get('/admin/genre/activate/{id}', [GenreController::class, 'active'])
+        ->name('admin.genre.active');
+    Route::get('/admin/genre/deactivate/{id}', [GenreController::class, 'deactivate'])
+        ->name('admin.genre.deactive');
 });
 
 //dashboard van profiel

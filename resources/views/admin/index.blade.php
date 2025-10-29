@@ -16,6 +16,8 @@
             <a class="flex-1 border-4 border-reviewborder bg-reviewborder hover:bg-review px-4 py-2 rounded-md"
                href="{{ route('admin.games') }}">Games</a>
             <a class="flex-1 border-4 border-reviewborder bg-reviewborder hover:bg-review px-4 py-2 rounded-md"
+               href="{{ route('admin.genres') }}">Genres</a>
+            <a class="flex-1 border-4 border-reviewborder bg-reviewborder hover:bg-review px-4 py-2 rounded-md"
                href="{{ route('admin.users') }}">Users</a>
         </div>
     </x-slot>

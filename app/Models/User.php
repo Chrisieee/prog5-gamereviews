@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class);
     }
+
+    public function comments(): User|\Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

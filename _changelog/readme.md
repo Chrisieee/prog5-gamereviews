@@ -1,3 +1,16 @@
+To do:
+- Profiel knopje
+- Genres deactiveren
+- Game aanpassen (admin)
+- Filteren miss anders oplossen?
+- Profiel foto?
+
+## Woensdag 29 oktober
+- Diepere validatie werkt!
+- Edit werkt weer (was even kapot)
+- Styling van de details pagina
+- Hij zoekt nu ook in de text kolom
+
 ## Dinsdag 28 oktober
 - Zoeken en filteren tegelijk werkt ook!
 - Zoeken op gamenaam werkt nu ook

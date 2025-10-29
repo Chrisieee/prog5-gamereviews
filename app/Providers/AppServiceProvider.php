@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Review;
+use App\Models\Comment;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -35,11 +36,22 @@ class AppServiceProvider extends ServiceProvider
                 return true;
             } else if ($user->admin){
                 return true;
+            } else {
+                return false;
             }
         });
 
         Gate::define('activate', function (User $user, Review $review) {
             return $user->admin;
+        });
+
+        Gate::define('review-make', function (User $user) {
+            $query = Comment::with(['user'])->where('user_id', '=', $user->id )->get()->count();
+            if ($query >= 3) {
+                return true;
+            } else {
+                return false;
+            }
         });
     }
 }
