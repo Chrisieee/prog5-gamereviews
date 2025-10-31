@@ -16,15 +16,19 @@
 
         <table>
             <tr class="text-left font-bold">
+                <td class="px-2 py-1">Id</td>
                 <td class="px-2 py-1">Name</td>
                 <td class="px-2 py-1">Email</td>
-                <td class="px-2 py-1"></td>
-                <td class="px-2 py-1"></td>
+                <td class="px-2 py-1">Comments</td>
+                <td class="px-2 py-1">Reviews</td>
             </tr>
             @foreach($users as $user)
                 <tr>
+                    <td class="px-2 py-1">{{ $user->id }}</td>
                     <td class="px-2 py-1">{{ $user->name }}</td>
                     <td class="px-2 py-1">{{ $user->email }}</td>
+                    <td class="px-2 py-1">{{ \App\Models\Comment::where('user_id', '=', $user->id)->count() }}</td>
+                    <td class="px-2 py-1">{{ \App\Models\Review::where('user_id', '=', $user->id)->count() }}</td>
 {{--                    <td class="px-2 py-1"><a class="hover:text-nav" href="{{ route('users.edit', $user->id) }}">Edit</a></td>--}}
 {{--                    <td class="px-2 py-1"><a class="hover:text-nav" href="{{ route('users.delete', $user->id) }}">Delete</a></td>--}}
                 </tr>

@@ -1,9 +1,20 @@
 To do:
 - Profiel knopje
-- Genres deactiveren
-- Game aanpassen (admin)
+- Game aanpassen (admin)?
+- Validatie create en edit checken
+- Tekst home page en about page
 - Filteren miss anders oplossen?
 - Profiel foto?
+
+## Vrijdag 31 oktober
+- Seeder gemaakt voor de genres
+- Admin kan genres deactiveren en activeren
+- Admin ziet nu hoeveel reviews en comments een user heeft
+- Admin ziet hoeveel games een genre heeft
+
+## Donderdag 30 oktober
+- To do lijstje maken
+- Styling van comments
 
 ## Woensdag 29 oktober
 - Diepere validatie werkt!

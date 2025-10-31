@@ -21,18 +21,21 @@
                 <p class="font-bold">{{ $review->game->name }}</p>
                 <p>{{ $review->text }}</p>
             </div>
-            <div>
+            <div class="text-right">
                 <p>From: {{ $review->user->name }}</p>
                 @can('edit-review', $review)
                     <a class="hover:text-nav" href="{{ route('reviews.edit', $review->id) }}">Edit</a>
                 @endcan
             </div>
-            <div>
+            <div class="text-center">
                 @auth
                     <a class="hover:text-nav" href="{{ route('comment.create', $review->id) }}">Post a comment</a>
                 @endauth
                 @foreach($review->comments as $comment)
-                    <p>{{ $comment->user->name }}: {{ $comment->text }}</p>
+                    <div class="text-left p-2 border-2 border-solid border-reviewborder rounded-xl h-full">
+                        <p class="font-bold">{{ $comment->user->name }}:</p>
+                        <p>{{ $comment->text }}</p>
+                    </div>
                 @endforeach
             </div>
         </div>

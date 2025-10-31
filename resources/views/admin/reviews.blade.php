@@ -16,14 +16,17 @@
 
         <table>
             <tr class="text-left font-bold">
+                <td class="px-2 py-1">Id</td>
                 <td class="px-2 py-1">Title</td>
+                <td class="px-2 py-1">Game</td>
                 <td class="px-2 py-1">User</td>
                 <td class="px-2 py-1">Status</td>
-                <td class="px-2 py-1"></td>
             </tr>
             @foreach($reviews as $review)
                 <tr>
+                    <td class="px-2 py-1">{{ $review->id }}</td>
                     <td class="px-2 py-1">{{ $review->title }}</td>
+                    <td class="px-2 py-1">{{ $review->game->name }}</td>
                     <td class="px-2 py-1">{{ $review->user->name }}</td>
                     @if($review->active === 0)
                         <td class="px-2 py-1"><a class="text-red hover:text-nav" href="{{ route('admin.review.active', $review->id) }}">Publish</a></td>

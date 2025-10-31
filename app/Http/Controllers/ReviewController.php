@@ -32,7 +32,7 @@ class ReviewController extends Controller
         }
 
         $reviews = $query->get();
-        $genres = Genre::all();
+        $genres = Genre::where('active', '=', '1')->get();
         return view('reviews.index', ['reviews' => $reviews, 'genres' => $genres]);
     }
 

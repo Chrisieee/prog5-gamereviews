@@ -4,14 +4,15 @@
     </x-slot>
 
     <x-slot name="section">
-            <table>
+        <h3 class="text-xl font-bold text-center pb-2">Reviews:</h3>
+            <table class="text-left">
                 <tr>
-                    <th>Title</th>
-                    <th>Rating</th>
-                    <th>Game</th>
-                    <th>Text</th>
-                    <th></th>
-                    <th></th>
+                    <th class="px-2">Title</th>
+                    <th class="px-2">Rating</th>
+                    <th class="px-2">Game</th>
+                    <th class="px-2">Text</th>
+                    <th class="px-2"></th>
+                    <th class="px-2"></th>
                 </tr>
                 @foreach($reviews as $review)
                     <tr>

@@ -18,7 +18,7 @@
             <tr class="text-left font-bold">
                 <td class="px-2 py-1">Name</td>
                 <td class="px-2 py-1">Status</td>
-                <td class="px-2 py-1"></td>
+                <td class="px-2 py-1">Games</td>
             </tr>
             @foreach($genres as $genre)
                 <tr>
@@ -28,6 +28,7 @@
                     @else
                         <td class="px-2 py-1"><a class="text-green hover:text-nav" href="{{ route('admin.genre.deactive', $genre->id) }}">Unpublish</a></td>
                     @endif
+                    <td class="px-2 py-1">{{ \App\Models\Game::whereRelation('genres', 'genre_id', $genre->id)->count() }}</td>
                 </tr>
             @endforeach
         </table>
