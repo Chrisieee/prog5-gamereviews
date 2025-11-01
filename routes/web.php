@@ -65,14 +65,10 @@ Route::middleware(['auth', IsAdmin::class])->group(function () {
         ->name('admin.games');
     Route::get('/admin/genres', [AdminController::class, 'genres'])
         ->name('admin.genres');
-    Route::get('/admin/review/activate/{id}', [ReviewController::class, 'active'])
-        ->name('admin.review.active');
-    Route::get('/admin/review/deactivate/{id}', [ReviewController::class, 'deactivate'])
-        ->name('admin.review.deactive');
-    Route::get('/admin/genre/activate/{id}', [GenreController::class, 'active'])
-        ->name('admin.genre.active');
-    Route::get('/admin/genre/deactivate/{id}', [GenreController::class, 'deactivate'])
-        ->name('admin.genre.deactive');
+    Route::get('/admin/review/toggle/{id}', [ReviewController::class, 'toggle'])
+        ->name('admin.review.toggle');
+    Route::get('/admin/genre/toggle/{id}', [GenreController::class, 'toggle'])
+        ->name('admin.genre.toggle');
 });
 
 //dashboard van profiel

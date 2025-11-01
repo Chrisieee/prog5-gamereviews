@@ -8,20 +8,16 @@ use Illuminate\Http\Request;
 
 class GenreController extends Controller
 {
-    public function active($id)
+    public function toggle($id)
     {
         $genre = Genre::find($id);
 
-        $genre->active = 1;
-        $genre->save();
-        return redirect()->route('admin.genres');
-    }
+        if ($genre->active === 1) {
+            $genre->active = 0;
+        } else if ($genre->active === 0) {
+            $genre->active = 1;
+        }
 
-    public function deactivate($id)
-    {
-        $genre = Genre::find($id);
-
-        $genre->active = 0;
         $genre->save();
         return redirect()->route('admin.genres');
     }

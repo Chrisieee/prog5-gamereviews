@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-bold">Welcome {{ Auth::user()->name }}</h2>
+        <h2 class="text-xl font-bold">Welcome admin {{ Auth::user()->name }}</h2>
     </x-slot>
 
     <x-slot name="table">

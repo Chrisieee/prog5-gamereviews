@@ -32,7 +32,7 @@
                     <a class="hover:text-nav" href="{{ route('comment.create', $review->id) }}">Post a comment</a>
                 @endauth
                 @foreach($review->comments as $comment)
-                    <div class="text-left p-2 border-2 border-solid border-reviewborder rounded-xl h-full">
+                    <div class="mb-2 text-left p-2 border-2 border-solid border-reviewborder rounded-xl h-full">
                         <p class="font-bold">{{ $comment->user->name }}:</p>
                         <p>{{ $comment->text }}</p>
                     </div>

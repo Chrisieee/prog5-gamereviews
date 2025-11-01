@@ -31,7 +31,7 @@ class ReviewController extends Controller
             })->orWhere('text', 'like', '%' . $request->input('name') . '%')->get();
         }
 
-        $reviews = $query->get();
+        $reviews = $query->latest()->get();
         $genres = Genre::where('active', '=', '1')->get();
         return view('reviews.index', ['reviews' => $reviews, 'genres' => $genres]);
     }
@@ -76,7 +76,8 @@ class ReviewController extends Controller
         return redirect()->route('reviews.index');
     }
 
-    public function active($id)
+    //activeert of deactiveerd de review
+    public function toggle($id)
     {
         $review = Review::find($id);
 
@@ -84,20 +85,12 @@ class ReviewController extends Controller
             return redirect()->route('home');
         }
 
-        $review->active = 1;
-        $review->save();
-        return redirect()->route('admin.reviews');
-    }
-
-    public function deactivate($id)
-    {
-        $review = Review::find($id);
-
-        if (Auth::user()->cannot('activate', $review)) {
-            return redirect()->route('home');
+        if ($review->active === 1) {
+            $review->active = 0;
+        } else if ($review->active === 1) {
+            $review->active = 0;
         }
 
-        $review->active = 0;
         $review->save();
         return redirect()->route('admin.reviews');
     }

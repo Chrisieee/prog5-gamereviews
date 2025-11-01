@@ -1,10 +1,18 @@
-To do:
+# Changelog
+
+## To do:
 - Profiel knopje
-- Game aanpassen (admin)?
 - Validatie create en edit checken
 - Tekst home page en about page
+- Styling gegevens aanpassen
+- Game aanpassen (admin)?
 - Filteren miss anders oplossen?
 - Profiel foto?
+
+## Zaterdag 01 november
+- Admin kan overview van games zien
+- Admin kan ook de reviews verwijderen
+- Hij toont de meest recente reviews eerst
 
 ## Vrijdag 31 oktober
 - Seeder gemaakt voor de genres

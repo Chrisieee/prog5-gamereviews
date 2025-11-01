@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-bold">Welcome {{ Auth::user()->name }}</h2>
+        <h2 class="text-xl font-bold">Welcome admin {{ Auth::user()->name }}</h2>
     </x-slot>
 
     <x-slot name="table">
@@ -24,9 +24,9 @@
                 <tr>
                     <td class="px-2 py-1">{{ $genre->name }}</td>
                     @if($genre->active === 0)
-                        <td class="px-2 py-1"><a class="text-red hover:text-nav" href="{{ route('admin.genre.active', $genre->id) }}">Publish</a></td>
+                        <td class="px-2 py-1"><a class="text-red hover:text-nav" href="{{ route('admin.genre.toggle', $genre->id) }}">Publish</a></td>
                     @else
-                        <td class="px-2 py-1"><a class="text-green hover:text-nav" href="{{ route('admin.genre.deactive', $genre->id) }}">Unpublish</a></td>
+                        <td class="px-2 py-1"><a class="text-green hover:text-nav" href="{{ route('admin.genre.toggle', $genre->id) }}">Unpublish</a></td>
                     @endif
                     <td class="px-2 py-1">{{ \App\Models\Game::whereRelation('genres', 'genre_id', $genre->id)->count() }}</td>
                 </tr>
