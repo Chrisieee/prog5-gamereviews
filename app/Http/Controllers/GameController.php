@@ -28,7 +28,6 @@ class GameController extends Controller
         $game = new Game();
         $game->name = $request->input('name');
         $game->release_date = $request->input('release_date');
-//        dd($request['genre_id']);
         $game->description = $request->input('description');
 
         $game->save();

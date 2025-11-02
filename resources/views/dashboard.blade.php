@@ -4,6 +4,10 @@
     </x-slot>
 
     <x-slot name="section">
+        <div class="text-right my-2">
+            <a href="{{ route('profile.edit') }}" class="items-center px-4 py-2 bg-reviewborder border-4 border-reviewborder rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-review hover:border-reviewborder hover:border-4 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                Profile edit</a>
+        </div>
         <h3 class="text-xl font-bold text-center pb-2">Reviews:</h3>
             <table class="text-left">
                 <tr>

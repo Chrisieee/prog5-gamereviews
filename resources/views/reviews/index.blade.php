@@ -28,10 +28,10 @@
 
         <div class="flex-1"></div>
 
-        @if(Auth::user()->can('review-make'))
+        @can('review-make')
             <a class="border-4 border-reviewborder bg-reviewborder hover:bg-review px-4 py-2 rounded-md"
                href="{{ route('reviews.create') }}">New review</a>
-        @endif
+        @endcan
     </div>
 
 

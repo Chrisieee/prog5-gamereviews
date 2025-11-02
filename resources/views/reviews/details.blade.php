@@ -23,9 +23,11 @@
             </div>
             <div class="text-right">
                 <p>From: {{ $review->user->name }}</p>
+
                 @can('edit-review', $review)
                     <a class="hover:text-nav" href="{{ route('reviews.edit', $review->id) }}">Edit</a>
                 @endcan
+
             </div>
             <div class="text-center">
                 @auth

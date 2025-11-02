@@ -3,10 +3,9 @@
         <h1 class="text-xl font-bold">About</h1>
     </x-slot>
     <x-slot name="section">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa cupiditate debitis
-            delectus doloremque eum eveniet, magnam, maiores mollitia nobis officia provident quaerat quasi quia quod
-            ratione recusandae reiciendis suscipit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A commodi
-            consequatur doloremque est et facere harum impedit quaerat repudiandae sapiente. Animi asperiores eum
-            incidunt laborum molestias nemo pariatur ratione similique.</p>
+        <p>Op deze website draait alles om jouw mening over games.
+            Lees reviews van andere spelers, ontdek nieuwe titels en deel jouw eigen ervaringen met de community.
+            Of je nu casual gamer bent of een echte completionist bent, iedereen is welkom om mee te praten en te beoordelen.
+            Samen maken we gamen leuker door eerlijke meningen en nuttige reviews te delen.</p>
     </x-slot>
 </x-app-layout>

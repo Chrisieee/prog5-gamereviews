@@ -3,11 +3,8 @@
         <h1 class="text-xl font-bold">Home</h1>
     </x-slot>
     <x-slot name="section">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa cupiditate debitis
-            delectus doloremque eum eveniet, magnam, maiores mollitia nobis officia provident quaerat quasi quia quod
-            ratione recusandae
-            reiciendis suscipit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A commodi consequatur
-            doloremque est et facere harum impedit quaerat repudiandae sapiente. Animi asperiores eum incidunt
-            laborum molestias nemo pariatur ratione similique.</p>
+        <p>Welkom bij onze game community!
+            Samen maken we van deze website de website voor game reviews laat vooral je eigen reviews achter over games
+            die je gespeeld hebt. En laat ook op reviews jouw mening achter doormiddel van een comment!</p>
     </x-slot>
 </x-app-layout>

@@ -1,13 +1,16 @@
 # Changelog
 
 ## To do:
-- Profiel knopje
-- Validatie create en edit checken
-- Tekst home page en about page
-- Styling gegevens aanpassen
-- Game aanpassen (admin)?
-- Filteren miss anders oplossen?
-- Profiel foto?
+- Game aanpassen (admin)
+- Filteren miss anders oplossen
+- Profiel foto
+
+## Zondag 02 november
+- Text op de home en about pagina veranderd
+- Bug gefixt bij de index van reviews als je niet ingelogd bent
+- De validatie van de create en edit even gecontroleerd
+- De profiel pagina styling is aangepast
+- Je kan vanaf je dashboard naar je profile edit
 
 ## Zaterdag 01 november
 - Admin kan overview van games zien

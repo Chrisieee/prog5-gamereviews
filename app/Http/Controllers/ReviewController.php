@@ -52,7 +52,7 @@ class ReviewController extends Controller
     {
         $request->validate([
             'title' => 'required|max:100',
-            'rating' => 'required',
+            'rating' => 'required|min:0|max:5',
             'game_id' => 'required',
             'text' => 'required',
         ]);
@@ -74,25 +74,6 @@ class ReviewController extends Controller
         $review->save();
 
         return redirect()->route('reviews.index');
-    }
-
-    //activeert of deactiveerd de review
-    public function toggle($id)
-    {
-        $review = Review::find($id);
-
-        if (Auth::user()->cannot('activate', $review)) {
-            return redirect()->route('home');
-        }
-
-        if ($review->active === 1) {
-            $review->active = 0;
-        } else if ($review->active === 1) {
-            $review->active = 0;
-        }
-
-        $review->save();
-        return redirect()->route('admin.reviews');
     }
 
     //laat de detailpagina zien en stuurt de specified review mee
@@ -120,7 +101,7 @@ class ReviewController extends Controller
     {
         $request->validate([
             'title' => 'required|max:100',
-            'rating' => 'required',
+            'rating' => 'required|min:0|max:5',
             'game_id' => 'required',
             'text' => 'required',
         ]);
@@ -164,5 +145,24 @@ class ReviewController extends Controller
         $review->delete();
 
         return redirect()->route('reviews.index');
+    }
+
+    //activeert of deactiveerd de review
+    public function toggle($id)
+    {
+        $review = Review::find($id);
+
+        if (Auth::user()->cannot('activate', $review)) {
+            return redirect()->route('home');
+        }
+
+        if ($review->active === 1) {
+            $review->active = 0;
+        } else if ($review->active === 0) {
+            $review->active = 1;
+        }
+
+        $review->save();
+        return redirect()->route('admin.reviews');
     }
 }
